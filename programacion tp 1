@@ -1,0 +1,224 @@
+4/4/25
+1. Investiga y escribe un breve párrafo sobre un programa de software famoso (como un juego o
+una aplicación) que sea desarrollado en C++. Describe para qué se utiliza y por qué es popular.
+2. Analizar el siguiente diagrama de flujo,
+determinar el resultado luego de su
+ejecución. Realizar el programa en C++
+Para cada actividad encontrar una solución resolviendo con funciones y procedimientos:
+3. Se ingresan por teclado tres números, si todos los valores ingresados son menores a 10,
+imprimir en pantalla la leyenda "Todos los números son menores a diez".
+4. Confeccionar un programa que permita cargar un número entero positivo de hasta tres
+cifras y muestre un mensaje indicando si tiene 1, 2, o 3 cifras. Mostrar un mensaje de error
+si el número de cifras es mayor.
+5. Escribir un programa que permita obtener los resultados de una evaluación, en base a
+la cantidad total de preguntas que se le realizaron y la cantidad de preguntas que
+contestó correctamente. Se pide confeccionar un programa que ingrese los dos datos
+por teclado e informe el nivel del mismo según el porcentaje de respuestas correctas que
+ha obtenido, y sabiendo que:
+ Nivel máximo: Porcentaje>=90%.
+ Nivel medio: Porcentaje>=75% y <90%.
+ Nivel regular: Porcentaje>=50% y <75%.
+ Fuera de nivel: Porcentaje<50%.
+6. Realice un programa que determine el pago a realizar por la entrada a un espectáculo
+donde se pueden comprar sólo hasta cuatro entradas, donde al costo de dos entradas
+se les descuenta el 10%, al de tres entradas el 15% y a la compra de cuatro tickets se le
+descuenta el 20 %.
+7. Desarrolle un programa que funcione como cajero automático.
+8. Implementa un programa que pida dos números al usuario y muestre el MCD calculado.
+Define una función llamada calcularMCD que reciba dos parámetros enteros.
+La función debe devolver el máximo común divisor de los dos números.
+Ejemplo de ejecución:
+Ingrese el primer número: 56 Ingrese el segundo número: 98 El MCD es: 14
+RESPUESTAS
+1)Investigación sobre un programa de software famoso en C++
+Uno de los programas mas famosos desarrollados en C++ es Adobe Photoshop. Este potente software de edición de imagenes es ampliamente utilizado por diseñadores graficos, fotografos y artistas digitales de todo el mundo. Photoshop permite la edición avanzada de imágenes mediante capas, filtros, retoques, ajustes de color y muchas otras herramientas profesionales. Su popularidad se debe a su versatilidad, a la calidad de sus herramientas y a su integración con otras aplicaciones de Adobe. C++ se usa en su desarrollo por el alto rendimiento que ofrece, especialmente en tareas que requieren procesamiento gráfico intensivo.
+2)
+#include <iostream>
+using namespace std;
+
+int main() {
+    float nota1, nota2, nota3, prom;
+    cout << "Ingrese la nota 1: ";
+    cin >> nota1;
+    cout << "Ingrese la nota 2: ";
+    cin >> nota2;
+    cout << "Ingrese la nota 3: ";
+    cin >> nota3;
+    prom = (nota1 + nota2 + nota3) / 3;
+    if (prom >= 7) {
+        cout << "Promocionado" << endl;
+    } else {
+        if (prom >= 4) {
+            cout << "Regular" << endl;
+        } else {
+            cout << "Reprobado" << endl;
+        }
+    }
+    return 0;
+}
+3)
+#include <iostream>
+using namespace std;
+
+void verificarMenoresADiez(int a, int b, int c) {
+    if (a < 10 && b < 10 && c < 10) {
+        cout << "todos los numeros son menores a diez" << endl;
+    }
+}
+int main() {
+    int a, b, c;
+    cout << "Ingrese tres numeros: ";
+    cin >> a >> b >> c;
+    verificarMenoresADiez(a, b, c);
+    return 0;
+}
+4)
+#include <iostream>
+using namespace std;
+void contarCifras(int numero) {
+    if (numero >= 0 && numero < 10)
+        cout << "tiene 1 cifra" << endl;
+    else if (numero < 100)
+        cout << "tiene 2 cifras" << endl;
+    else if (numero < 1000)
+        cout << "tiene 3 cifras" << endl;
+    else
+        cout << "error el numero tiene mas de 3 cifras" << endl;
+}
+int main() {
+    int numero;
+    cout << "Ingrese un numero entero positivo: ";
+    cin >> numero;
+    contarCifras(numero);
+    return 0;
+}
+5)
+#include <iostream>
+using namespace std;
+void evaluarNivel(int total, int correctas) {
+    float porcentaje = (float)correctas / total * 100;
+    if (porcentaje >= 90)
+        cout << "nivel maximo" << endl;
+    else if (porcentaje >= 75)
+        cout << "nivel medio" << endl;
+    else if (porcentaje >= 50)
+        cout << "nivel regular" << endl;
+    else
+        cout << "fuera de nivel" << endl;
+}
+int main() {
+    int total, correctas;
+    cout << "Ingrese la cantidad total de preguntas: ";
+    cin >> total;
+    cout << "Ingrese la cantidad de respuestas correctas: ";
+    cin >> correctas;
+    evaluarNivel(total, correctas);
+    return 0;
+}
+6)
+#include <iostream>
+using namespace std;
+float calcularPago(int cantidad, float precio) {
+    float total = cantidad * precio;
+    if (cantidad == 2)
+        total *= 0.9;
+    else if (cantidad == 3)
+        total *= 0.85;
+    else if (cantidad == 4)
+        total *= 0.8;
+    return total;
+}
+int main() {
+    int entradas;
+    float precio;
+    cout << "Ingrese cantidad de entradas (maximo 4): ";
+    cin >> entradas;
+    if (entradas < 1 || entradas > 4) {
+        cout << "cantidad no permitida" << endl;
+        return 0;
+    }
+    cout << "Ingrese el precio de una entrada: ";
+    cin >> precio;
+    float total = calcularPago(entradas, precio);
+    cout << "el total a pagar es: " << total << endl;
+    return 0;
+}
+7)
+#include <iostream>
+using namespace std;
+
+float saldo = 10000;
+
+void mostrarMenu() {
+    cout << "1 consultar saldo" << endl;
+    cout << "2 depositar dinero" << endl;
+    cout << "3 retirar dinero" << endl;
+    cout << "4 salir" << endl;
+}
+
+void consultarSaldo() {
+    cout << "saldo actual: " << saldo << endl;
+}
+
+void depositar(float monto) {
+    saldo += monto;
+    cout << "deposito exitoso" << endl;
+}
+
+void retirar(float monto) {
+    if (monto <= saldo) {
+        saldo -= monto;
+        cout << "retiro exitoso" << endl;
+    } else {
+        cout << "saldo insuficiente" << endl;
+    }
+}
+
+int main() {
+    int opcion;
+    float monto;
+    do {
+        mostrarMenu();
+        cout << "seleccione una opcion: ";
+        cin >> opcion;
+        switch(opcion) {
+            case 1: consultarSaldo(); break;
+            case 2: 
+                cout << "monto a depositar: ";
+                cin >> monto;
+                depositar(monto); 
+                break;
+            case 3: 
+                cout << "monto a retirar: ";
+                cin >> monto;
+                retirar(monto); 
+                break;
+            case 4: cout << "saliendo del sistema" << endl; break;
+            default: cout << "opcion invalida" << endl;
+        }
+    } while(opcion != 4);
+    return 0;
+}
+8)
+#include <iostream>
+using namespace std;
+
+int calcularMCD(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int main() {
+    int num1, num2;
+    cout << "ingrese el primer numero: ";
+    cin >> num1;
+    cout << "ingrese el segundo numero: ";
+    cin >> num2;
+    int mcd = calcularMCD(num1, num2);
+    cout << "el mcd es: " << mcd << endl;
+    return 0;
+}
